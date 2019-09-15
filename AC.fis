@@ -1,0 +1,50 @@
+[System]
+Name='AC'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=4
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Temprature'
+Range=[5 65]
+NumMFs=7
+MF1='UL':'trimf',[-5.002 5 15]
+MF2='VL':'trimf',[5 15 25]
+MF3='L':'trimf',[15 25 35]
+MF4='N':'trimf',[25 35 45]
+MF5='H':'trimf',[35 45 55]
+MF6='VH':'trimf',[45 55 65]
+MF7='UH':'trimf',[55 65 75.02]
+
+[Input2]
+Name='Humidity'
+Range=[0 1]
+NumMFs=3
+MF1='High':'trimf',[-0.5 0 0.5]
+MF2='N':'trimf',[0 0.5 1]
+MF3='Low':'trimf',[0.5 1 1.5]
+
+[Output1]
+Name='KW'
+Range=[0 3]
+NumMFs=7
+MF1='UL':'trapmf',[-0.3333 -0.1667 0.1667 0.3333]
+MF2='VL':'trapmf',[0.05002 0.45 0.5498 0.9502]
+MF3='L':'trapmf',[0.5498 0.9502 1.05 1.45]
+MF4='N':'trapmf',[1.05 1.45 1.55 1.95]
+MF5='H':'trapmf',[1.55 1.95 2.05 2.45]
+MF6='VH':'trapmf',[2.05 2.45 2.55 2.95]
+MF7='UH':'trapmf',[2.55 2.95 3.052 3.45]
+
+[Rules]
+1 1, 1 (1) : 1
+2 1, 2 (1) : 1
+6 3, 6 (1) : 1
+7 3, 7 (1) : 1
